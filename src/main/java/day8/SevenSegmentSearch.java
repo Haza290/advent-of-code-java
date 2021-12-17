@@ -1,6 +1,5 @@
 package day8;
 
-import day7.*;
 import util.*;
 
 import java.io.*;
@@ -15,6 +14,7 @@ public class SevenSegmentSearch {
         File testFile = new File(SevenSegmentSearch.class.getResource("/day8/input.txt").toURI());
 
         System.out.println(new SevenSegmentSearch(testFile).count1478Outputs());
+        System.out.println(new SevenSegmentSearch(testFile).sumOutputs());
     }
 
     public SevenSegmentSearch(File signalsFile) {
@@ -23,5 +23,9 @@ public class SevenSegmentSearch {
 
     public int count1478Outputs() {
         return this.patterns.stream().mapToInt(SevenSegmentPattern::count147and8).sum();
+    }
+
+    public long sumOutputs() {
+        return this.patterns.stream().map(SevenSegmentPattern::getOutputValue).reduce(0L, Long::sum);
     }
 }

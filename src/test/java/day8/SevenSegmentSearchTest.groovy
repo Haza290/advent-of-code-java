@@ -13,4 +13,14 @@ class SevenSegmentSearchTest extends Specification {
         then: "I get the correct answer"
             count == 26
     }
+
+    def "Sum all output vales from patterns"() {
+        given: "A set of signals"
+            File testFile = new File(getClass().getResource('/day8/testInput.txt').toURI())
+            SevenSegmentSearch sevenSegmentSearch = new SevenSegmentSearch(testFile)
+        when: "I sum the output values of all the patterns"
+            long count = sevenSegmentSearch.sumOutputs()
+        then: "I get the correct answer"
+            count == 61229
+    }
 }
