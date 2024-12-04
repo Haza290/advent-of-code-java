@@ -22,4 +22,15 @@ class ReadFileTest extends Specification {
         then: "The list is created correctly"
             actualList == [123, 558, 0, 21, 12001]
     }
+
+    def "Read vertical lists to Integer array"() {
+        given: "A file with 2 vertical lists"
+        File testFile = new File(getClass().getResource('/VerticalNumberFile.txt').toURI())
+
+        when: "I read the file into 2 lists"
+        List<List<Integer>> lists = ReadFile.fromVerticalListstoIntegerList(testFile);
+
+        then: "the 2 lists are created correctly"
+        lists == [[3, 4, 2, 1, 3, 3], [4, 3, 5, 3, 9, 3]]
+    }
 }

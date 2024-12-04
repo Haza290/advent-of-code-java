@@ -11,6 +11,7 @@
     <modules>
         <module>year2021</module>
         <module>util</module>
+        <module>year2024</module>
     </modules>
 
     <build>
