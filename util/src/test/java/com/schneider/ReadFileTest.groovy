@@ -18,7 +18,7 @@ class ReadFileTest extends Specification {
         given: "That I have a file with multiple text lines"
             File testFile = new File(getClass().getResource('/MultiLineNumberFile.txt').toURI())
         when: "I read the file into a list"
-            List<Integer> actualList = ReadFile.toIntegerList(testFile);
+        List<Integer> actualList = ReadFile.toIntegerList(testFile);
         then: "The list is created correctly"
             actualList == [123, 558, 0, 21, 12001]
     }
@@ -32,5 +32,17 @@ class ReadFileTest extends Specification {
 
         then: "the 2 lists are created correctly"
         lists == [[3, 4, 2, 1, 3, 3], [4, 3, 5, 3, 9, 3]]
+    }
+
+    def "Read file to list of Integer lists"() {
+        given: "A file with integer lists"
+        File testFile = new File(getClass().getResource('/MultiIntegerListsFile.txt').toURI())
+
+        when: "I read the file into lists of Integer lists"
+        List<List<Integer>> lists = ReadFile.toListOfIntegerList(testFile);
+
+        then: "The list of Integer lists is created"
+        lists == [[7,6,4,2,1],[1,2,7,8,9],[9,7,6,2,1],[1,3,2,4,5],[8,6,4,4,1],[1,3,6,7,9]]
+
     }
 }

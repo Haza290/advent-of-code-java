@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class ReadFile {
 
@@ -44,6 +45,27 @@ public class ReadFile {
                 splitLine.removeIf(String::isEmpty);
                 list1.add(Integer.parseInt(splitLine.get(0)));
                 list2.add(Integer.parseInt(splitLine.get(1)));
+            }
+            fr.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return lists;
+    }
+
+    public static List<List<Integer>> toListOfIntegerList(File file) {
+        List<List<Integer>> lists = new ArrayList<>();
+        try {
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                List<Integer> list = Arrays.stream(line.split(" "))
+                        .filter(s -> !s.isEmpty())
+                        .map(Integer::parseInt)
+                        .toList();
+                lists.add(list);
             }
             fr.close();
         } catch (IOException e) {
