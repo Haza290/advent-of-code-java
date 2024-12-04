@@ -4,12 +4,32 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>com.schneider</groupId>
     <artifactId>Adevnt-of-code</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>year2021</module>
+        <module>util</module>
+    </modules>
 
     <build>
         <plugins>
+            <plugin>
+                <!-- The gmavenplus plugin is used to compile Groovy code. To learn more about this plugin,
+                visit https://github.com/groovy/GMavenPlus/wiki -->
+                <groupId>org.codehaus.gmavenplus</groupId>
+                <artifactId>gmavenplus-plugin</artifactId>
+                <version>1.12.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>compileTests</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -22,19 +42,7 @@
                 </configuration>
             </plugin>
         </plugins>
-<!--        <testResources>-->
-<!--            <testResource>-->
-<!--                <directory>src/test/java/day4</directory>-->
-<!--                <includes>-->
-<!--                    <include>-->
-<!--                        **/*.groovy-->
-<!--                    </include>-->
-<!--                </includes>-->
-<!--            </testResource>-->
-<!--        </testResources>-->
     </build>
-
-
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
