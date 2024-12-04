@@ -1,6 +1,6 @@
 package com.schneider.day2
 
-import day2.ReactorSafety
+
 import spock.lang.Specification
 
 class ReactorSafetySpec extends Specification {

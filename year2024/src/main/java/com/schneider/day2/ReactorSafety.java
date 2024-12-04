@@ -1,4 +1,4 @@
-package day2;
+package com.schneider.day2;
 
 import com.schneider.util.ReadFile;
 
