@@ -73,4 +73,22 @@ public class ReadFile {
         }
         return lists;
     }
+
+    public static String fileToString(File file) {
+        String string = "";
+        try {
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                string = string + "\n" + line;
+            }
+            string = string.substring(1);
+            fr.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return string;
+    }
 }

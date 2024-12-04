@@ -43,6 +43,17 @@ class ReadFileTest extends Specification {
 
         then: "The list of Integer lists is created"
         lists == [[7,6,4,2,1],[1,2,7,8,9],[9,7,6,2,1],[1,3,2,4,5],[8,6,4,4,1],[1,3,6,7,9]]
+    }
 
+    def "Read file to String"() {
+        given: "A file with a string"
+        File testFile = new File(getClass().getResource('/StringFile.txt').toURI())
+
+        when: "I read the file into a String"
+        String string = ReadFile.fileToString(testFile);
+
+        then: "The list of Integer lists is created"
+        string == "(541,249)who()<-~who()mul(323,779)>(%@when(764,373)mul(60,926)mul(998,76)[how()*/do()@who()*from()<+]^select()&mul(2,30)\n" +
+                "() select()/[%mul(4,45)(*^what()^:select(923,55)-#<mul(701,340)who()<don't()!^)-@[mul>mul(191,622)when()'?mul(784,659)/where()"
     }
 }
